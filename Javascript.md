@@ -46,9 +46,13 @@ const newStuff = build(stuff);
 
 #### `2.1` Inheritence
 
-Inheritence is kinda bad, but mostly is just overused.
+Inheritence can be kinda bad.
 
-...
+_@todo show examples of confusing inheritence, and good inheritence_
+
+#### `2.2` Composition
+
+_@todo show examples of composition over inheritence_
 
 ## Async Control Flow
 

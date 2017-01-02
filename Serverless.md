@@ -55,8 +55,13 @@ export const handler = HandlerNormalizer(async (event, context) => {
 
 ---
 
-#### 1.2 Handling responses
+#### 1.2 Handle responses consistantly
 
-...
+Serverless 1, by default, uses the `lambda-proxy` integration method.  
+This means that it recieves a http-like response and can return one as well.
+
+The `lambda-proxy` integration should be preferred unless custom API Gateway behaviour is needed.
+
+_@todo show examples_
 
 ---
