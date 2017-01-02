@@ -39,6 +39,8 @@ export default pure(MyComponent);
   - This ensures **performance** by **preventing re-renders** when props don't change.
   - Thus, the only way to re-render something is to **change** its **props**.
 
+---
+
 #### Type checking
 
 #### ✘ BAD
@@ -82,3 +84,5 @@ Text.propTypes = {
   text: PropTypes.string.isRequired,
 };
 ```
+
+---
