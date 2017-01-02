@@ -22,7 +22,7 @@ import SomeComponent from '../SomeComponent/SomeComponent';
 export const MyComponent = (props, context) =>
   <SomeComponent someProp={props.someProp}>
     {props.text}
-  </SomeComponent>;
+  </SomeComponent>
 
 MyComponent.propTypes = {
   text     : PropTypes.string.isRequired,
@@ -58,7 +58,7 @@ const Text = ({ text }, { doStuff }) =>
 import React, { PropTypes } from 'react';
 
 const Text = ({ text }, { doStuff }) =>
-  <div>{doStuff(text)}</div>;
+  <div>{doStuff(text)}</div>
 
 Text.propTypes = {
   text: PropTypes.string.isRequired,
@@ -78,7 +78,7 @@ type Props = { text: string };
 type Context = { doStuff: (text: string) => string };
 
 const Text = ({ text }: Props, { doStuff }: Context) =>
-  <div>{doStuff(text)}</div>;
+  <div>{doStuff(text)}</div>
 
 Text.propTypes = {
   text: PropTypes.string.isRequired,
