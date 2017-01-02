@@ -12,7 +12,7 @@ Handlers should not pass down callbacks, and instead should use promises.
 
 #### ✘ BAD
 
-```js
+```
 export function handler(event, context, done) {
   doMyStuff(event, context, done);
 }
