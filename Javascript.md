@@ -3,12 +3,11 @@
 This is a what-not-to-do section; specifically tackling:
 - Javascript, ES6
 - Node JS
-- React
 
 ## Index
 1. [Functions](#functions)
 2. [Classes](#classes)
-3. [Async Control Flow](#asyncControlFlow)
+3. [Async Control Flow](#async-control-flow)
 
 ---
 
@@ -48,12 +47,11 @@ const newStuff = build(stuff);
 
 #### `2.1` Inheritence
 
-Inheritence is bad, kinda.
+Inheritence is kinda bad, but mostly is just overused.
 
 ...
 
 ## Async Control Flow
-<a name="asyncControlFlow"></a>
 
 #### `3.1` Prefer async/await & promises
 
