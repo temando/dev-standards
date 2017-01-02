@@ -14,7 +14,7 @@ This is a what-not-to-do section; specifically tackling:
 
 ## Functions
 
-### `1.1` Keep them pure
+#### `1.1` Keep them pure
 
 #### ✘ BAD
 
@@ -46,7 +46,7 @@ const newStuff = build(stuff);
 
 ## Classes
 
-### 2.1 Inheritence
+#### `2.1` Inheritence
 
 Inheritence is bad, kinda.
 
@@ -55,7 +55,7 @@ Inheritence is bad, kinda.
 ## Async Control Flow
 <a name="asyncControlFlow"></a>
 
-### 3.1 Prefer async/await & promises
+#### `3.1` Prefer async/await & promises
 
 #### ✘ BAD
 
