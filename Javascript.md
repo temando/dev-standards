@@ -6,7 +6,7 @@ Javascript & Node.JS best practices.
 
 1. [Functions](#functions)
 2. [Classes](#classes)
-3. [Async Control Flow](#async-control-flow)
+3. [Control Flow](#control-flow)
 
 ---
 
@@ -48,13 +48,23 @@ const newStuff = build(stuff);
 
 Inheritence can be kinda bad.
 
-_@todo show examples of confusing inheritence, and good inheritence_
+#### ✘ BAD
+...
+
+#### ✓ GOOD
+...
 
 #### `2.2` Composition
 
-_@todo show examples of composition over inheritence_
+#### ✘ BAD
+...
 
-## Async Control Flow
+#### ✓ GOOD
+...
+
+---
+
+## Control Flow
 
 
 #### `3.1` Understand promises
