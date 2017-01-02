@@ -2,6 +2,8 @@
 
 Javascript & Node.JS best practices.
 
+---
+
 1. [Functions](#functions)
 2. [Classes](#classes)
 3. [Async Control Flow](#async-control-flow)

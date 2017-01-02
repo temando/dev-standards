@@ -2,8 +2,12 @@
 
 React best practices.
 
+---
+
 1. [Stateless Components](#stateless-components)
 2. [Type Checking](#type-checking)
+
+---
 
 ## Stateless Components
 
