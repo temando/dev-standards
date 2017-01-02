@@ -17,7 +17,7 @@ Javascript & Node.JS best practices.
 #### ✘ BAD
 
 ```
-function build(obj) => {
+function build(obj) {
   obj.values.push(2);
   obj.count += 1;
 }
