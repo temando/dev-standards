@@ -64,12 +64,8 @@ import React, { PropTypes } from 'react';
 const Text = ({ text }, { doStuff }) =>
   <div>{doStuff(text)}</div>
 
-Text.propTypes = {
-  text: PropTypes.string.isRequired,
-};
-Text.contextTypes = {
-  doStuff: PropTypes.func.isRequired,
-};
+Text.propTypes = { text: PropTypes.string.isRequired };
+Text.contextTypes = { doStuff: PropTypes.func.isRequired };
 ```
 
 #### ✓ BEST
@@ -84,9 +80,9 @@ type Context = { doStuff: (text: string) => string };
 const Text = ({ text }: Props, { doStuff }: Context) =>
   <div>{doStuff(text)}</div>
 
-Text.propTypes = {
-  text: PropTypes.string.isRequired,
-};
 ```
+
+It's not necessary to specify `propTypes` when Flow Types are used.
+
 
 ---
