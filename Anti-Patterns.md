@@ -6,18 +6,15 @@ This is a what-not-to-do section; specifically tackling:
 - React
 
 ## Index
-1) [Functions](#functions)
-2) [Classes](#classes)
-3) [Async Control Flow](#asyncControlFlow)
+- 1) [Functions](#functions)
+- 2) [Classes](#classes)
+- 3) [Async Control Flow](#asyncControlFlow)
 
 ---
 
 ## Functions
-<a name="functions"></a>
 
-[1.1](#s-1.1) Keep them pure
-<a name="s-1.1"></a>
-
+### 1.1 Keep them pure
 
 #### ✘ BAD
 
@@ -48,10 +45,8 @@ const newStuff = build(stuff);
 ---
 
 ## Classes
-<a name="classes"></a>
 
-[2.1](#s-2.1) Inheritence
-<a name="s-2.1"></a>
+### 2.1 Inheritence
 
 Inheritence is bad, kinda.
 
@@ -60,7 +55,7 @@ Inheritence is bad, kinda.
 ## Async Control Flow
 <a name="asyncControlFlow"></a>
 
-[3.1](#s-3.1) Prefer async await, and promises
+### 3.1 Prefer async/await & promises
 
 #### ✘ BAD
 
