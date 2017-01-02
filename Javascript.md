@@ -56,7 +56,21 @@ _@todo show examples of composition over inheritence_
 
 ## Async Control Flow
 
-#### `3.1` Prefer async/await & promises
+
+#### `3.1` Understand promises
+
+Understanding of control flow is critical to high quality, maintainable and stable code.
+
+#### ✘ BAD
+...
+
+#### ✓ GOOD
+...
+
+---
+
+
+#### `3.2` Prefer async/await & promises
 
 #### ✘ BAD
 

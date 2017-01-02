@@ -8,7 +8,7 @@ Serverless 1+ convention.
 
 #### 1.1 Abstract away the handler
 
-Handlers should not pass down callbacks, and instead should use promises.
+Handlers should not pass down callbacks, and instead should use promises.  
 
 #### ✘ BAD
 
