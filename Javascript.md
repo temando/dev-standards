@@ -97,7 +97,7 @@ import fs from 'fs';
 
 async function doAsyncStuff() {
   const file = await new Promise((resolve, reject) => {
-    fs.readFileAsync('./file.txt', (err, file) =>
+    fs.readFile('./file.txt', (err, file) =>
       (err ? reject(err) : resolve(file))
     );
   });
