@@ -6,15 +6,15 @@ This is a what-not-to-do section; specifically tackling:
 - React
 
 ## Index
-- 1) [Functions](#functions)
-- 2) [Classes](#classes)
-- 3) [Async Control Flow](#asyncControlFlow)
+1. [Functions](#functions)
+2. [Classes](#classes)
+3. [Async Control Flow](#asyncControlFlow)
 
 ---
 
 ## Functions
 
-### 1.1 Keep them pure
+### `1.1` Keep them pure
 
 #### ✘ BAD
 
