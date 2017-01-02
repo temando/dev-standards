@@ -32,13 +32,12 @@ MyComponent.propTypes = {
 export default pure(MyComponent);
 ```
 
-There are several key pieces to highlight:
-- The component is a function with parameters `props`, `context`
-- The component has `propTypes` as a static property
-- The raw component function is exported - this is so we can test it without `pure`
-- The default export is the `pure` wrapped component, or potentially `connect` wrapped.
-  - This ensures performance by preventing re-renders when props don't change
-  - Thus, the only way to re-render something is to change its props
+- `MyComponent` is a regular function with parameters `props` & `context`.
+- `MyComponent` has `propTypes` as a static property.
+- `MyComponent` itself is `export` - this is so we can test it without `pure`.
+- The default export should be a `pure` or `connect` wrapped component.
+  - This ensures **performance** by **preventing re-renders** when props don't change.
+  - Thus, the only way to re-render something is to **change** its **props**.
 
 #### Type checking
 
