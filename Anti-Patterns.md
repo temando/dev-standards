@@ -1,17 +1,27 @@
-# ANTI PATTERNS
+# Anti Patterns
 
 This is a what-not-to-do section; specifically tackling:
-- `javascript
-- `node.js`
-- `react`
+- Javascript, ES6
+- Node JS
+- React
 
-## FUNCTIONS
+## Index
+1) [Functions](#functions)
+2) [Classes](#classes)
+3) [Async Control Flow](#asyncControlFlow)
 
-Keep them pure.
+---
+
+## Functions
+<a name="functions"></a>
+
+[1.1](#s-1.1) Keep them pure
+<a name="s-1.1"></a>
+
 
 #### ✘ BAD
 
-```js
+```
 function build(obj) => {
   obj.values.push(2);
   obj.count += 1;
@@ -35,16 +45,26 @@ const stuff = { values: [1], count: 1 };
 const newStuff = build(stuff);
 ```
 
-## CLASSES
+---
+
+## Classes
+<a name="classes"></a>
+
+[2.1](#s-2.1) Inheritence
+<a name="s-2.1"></a>
 
 Inheritence is bad, kinda.
 
+...
 
-## ASYNC/AWAIT, PROMISES & CONTROL FLOW
+## Async Control Flow
+<a name="asyncControlFlow"></a>
+
+[3.1](#s-3.1) Prefer async await, and promises
 
 #### ✘ BAD
 
-```js
+```
 import fs from 'fs';
 
 function doAsyncStuff() {
@@ -80,6 +100,8 @@ async function doAsyncStuff() {
 
 Or, without promisification _(a new word?)_:
 
+#### ✓ GOOD
+
 ```js
 import fs from 'fs';
 
@@ -95,3 +117,5 @@ async function doAsyncStuff() {
   return file;
 };
 ```
+
+---

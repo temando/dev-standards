@@ -1,7 +1,7 @@
-# DEV STANDARDS
+# Dev Standards
 
-Standardizing things related to development and programming.
+Standardizing things related to development.
 
-## TABLE OF CONTENTS
+## Index
 - [README](README.md)
 - [Anti Patterns](Anti-Patterns.md)
