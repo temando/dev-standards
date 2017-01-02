@@ -6,7 +6,7 @@ Serverless 1+ convention.
 
 ## Handlers
 
-#### 1.1 Abstract away the handler
+#### `1.1` Abstract away the handler
 
 Handlers should not pass down callbacks, and instead should use promises.  
 
@@ -57,13 +57,17 @@ export const handler = HandlerNormalizer(async (event, context) => {
 
 ---
 
-#### 1.2 Handle responses consistantly
+#### `1.2` Handle responses consistantly
 
 Serverless 1, by default, uses the `lambda-proxy` integration method.  
 This means that it recieves a http-like response and can return one as well.
 
 The `lambda-proxy` integration should be preferred unless custom API Gateway behaviour is needed.
 
-_@todo show examples_
+#### ✘ BAD
+...
+
+#### ✓ GOOD
+...
 
 ---
