@@ -34,6 +34,8 @@ export const handler = (event, context, done) => {
 #### ✓ GOOD
 
 ```js
+import stuffHandler from './stuff';
+
 export const handler = HandlerNormalizer(stuffHandler)
 ```
 
