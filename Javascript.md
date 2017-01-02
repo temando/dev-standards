@@ -1,10 +1,7 @@
-# Anti Patterns
+# Javascript
 
-This is a what-not-to-do section; specifically tackling:
-- Javascript, ES6
-- Node JS
+Javascript & Node.JS best practices.
 
-## Index
 1. [Functions](#functions)
 2. [Classes](#classes)
 3. [Async Control Flow](#async-control-flow)
