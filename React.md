@@ -11,7 +11,7 @@ React best practices.
 
 ## Stateless Components
 
-#### 1.1 Prefer stateless components
+#### `1.1` Prefer stateless components
 
 Stateless components usually look like this:
 
@@ -46,6 +46,10 @@ export default pure(MyComponent);
 ---
 
 #### Type checking
+
+#### `2.1` Always check your props
+
+It's probably the easiest way to write tests.
 
 #### ✘ BAD
 
