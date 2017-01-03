@@ -147,7 +147,7 @@ async function doAsyncStuff() {
 
 #### ✘ BAD
 
-```js
+```
 try {
   await doStuffThatErrors();
 } catch (err) {
@@ -157,7 +157,7 @@ try {
 
 #### ✘ BAD
 
-```js
+```
 await doStuffThatErrors().catch(() => {
   // ...
 });
