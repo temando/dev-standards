@@ -7,6 +7,7 @@ Javascript & Node.JS best practices.
 1. [Functions](#functions)
 2. [Classes](#classes)
 3. [Control Flow](#control-flow)
+4. [Error Handling](#error-handling)
 
 ---
 
@@ -65,7 +66,6 @@ Inheritence can be kinda bad.
 ---
 
 ## Control Flow
-
 
 #### `3.1` Understand promises
 
@@ -136,6 +136,52 @@ async function doAsyncStuff() {
 
   return file;
 };
+```
+
+---
+
+## Handling Errors
+
+#### `4.1` Handling async errors
+
+
+#### ✘ BAD
+
+```js
+try {
+  await doStuffThatErrors();
+} catch (err) {
+  console.log(err);
+}
+```
+
+#### ✓ GOOD
+
+```js
+try {
+  await doStuffThatErrors();
+} catch (err) {
+  throw new MySpecialErrorConsumer(err);
+}
+```
+
+#### ✓ GOOD
+
+```js
+await doStuffThatErrors()
+  .catch((err) => {
+    throw new MySpecialErrorConsumer(err);
+  });
+```
+
+#### ✓ GOOD
+
+```js
+await doStuffThatErrors();
+
+// ...
+// Catch it up the chain in one place
+
 ```
 
 ---
