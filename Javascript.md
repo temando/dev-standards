@@ -155,6 +155,20 @@ try {
 }
 ```
 
+#### ✘ BAD
+
+```js
+await doStuffThatErrors().catch(() => {
+  // ...
+});
+```
+
+#### ✓ OKAYISH
+
+```js
+await doStuffThatErrorsButThatIDontCareAbout().catch();
+```
+
 #### ✓ GOOD
 
 ```js
