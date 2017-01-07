@@ -145,7 +145,6 @@ async function doAsyncStuff() {
 
 #### `4.1` Handling async errors
 
-
 #### ✘ BAD
 
 - ✘ Handle your errors, do not absorb them
@@ -156,11 +155,7 @@ try {
 } catch (err) {
   console.log(err);
 }
-```
 
-#### ✘ BAD
-
-```js
 await doStuffThatErrorsCritically().catch(() => {
   console.log(err);
 });
@@ -174,14 +169,17 @@ await doStuffThatErrorsButThatIDontCareAbout().catch();
 
 #### ✓ GOOD
 
+- ✓ Using `.catch()` allows you to maintain your **variable scope**
+
 ```js
+let result
 try {
-  await doStuffThatErrors();
+  result = await doStuffThatErrors();
 } catch (err) {
   throw new MySpecialError(err);
 }
 
-await doStuffThatErrors()
+const result = await doStuffThatErrors()
   .catch((err) => {
     throw new MySpecialError(err);
   });
