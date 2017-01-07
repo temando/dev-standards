@@ -8,6 +8,7 @@ Javascript & Node.JS best practices.
 2. [Classes](#classes)
 3. [Control Flow](#control-flow)
 4. [Error Handling](#error-handling)
+5. [Variables](#variables)
 
 ---
 
@@ -17,7 +18,7 @@ Javascript & Node.JS best practices.
 
 #### ✘ BAD
 
-```
+```js
 function build(obj) {
   obj.values.push(2);
   obj.count += 1;
@@ -69,7 +70,7 @@ Inheritence can be kinda bad.
 
 #### `3.1` Understand promises
 
-Understanding of control flow is critical to high quality, maintainable and stable code.
+Control flow is critical to high quality, maintainable and stable code.
 
 #### ✘ BAD
 ...
@@ -84,7 +85,7 @@ Understanding of control flow is critical to high quality, maintainable and stab
 
 #### ✘ BAD
 
-```
+```js
 import fs from 'fs';
 
 function doAsyncStuff() {
@@ -147,9 +148,11 @@ async function doAsyncStuff() {
 
 #### ✘ BAD
 
-```
+- ✘ Handle your errors, do not absorb them
+
+```js
 try {
-  await doStuffThatErrors();
+  await doStuffThatErrorsCritically();
 } catch (err) {
   console.log(err);
 }
@@ -157,13 +160,13 @@ try {
 
 #### ✘ BAD
 
-```
-await doStuffThatErrors().catch(() => {
-  // ...
+```js
+await doStuffThatErrorsCritically().catch(() => {
+  console.log(err);
 });
 ```
 
-#### ✓ OKAYISH
+#### ✓ OKAY
 
 ```js
 await doStuffThatErrorsButThatIDontCareAbout().catch();
@@ -175,26 +178,209 @@ await doStuffThatErrorsButThatIDontCareAbout().catch();
 try {
   await doStuffThatErrors();
 } catch (err) {
-  throw new MySpecialErrorConsumer(err);
+  throw new MySpecialError(err);
 }
-```
 
-#### ✓ GOOD
-
-```js
 await doStuffThatErrors()
   .catch((err) => {
-    throw new MySpecialErrorConsumer(err);
+    throw new MySpecialError(err);
   });
 ```
 
 #### ✓ GOOD
 
-```js
-await doStuffThatErrors();
+- ✓ Let your errors bubble up and handle them in one place
+  - This means you must maintain a promises all the way up 
 
-// ...
-// Catch it up the chain in one place
+```js
+
+export function stuffHandler() {
+  doStuff()
+    .then(
+      (data) => {
+        // success
+      },
+      (err) => {
+        // failures
+      }
+    );
+}
+
+async function doStuff() {
+  await doStuffThatCanErrorCritically();
+  await doStuffThatCanErrorCritically();
+
+  return { success: true };
+}
+
+```
+
+---
+
+## Variables
+
+#### `5.1` Naming
+
+#### ✘ BAD
+
+- ✘ Redefined variables are hard to follow
+- ✘ Initials & single letter variables are unreadable *(with conventional exceptions)*
+
+```js
+let vals = get();
+vals = vals.map(({ c }) => c);
+
+let movieTitleString
+let theMovieTitle
+let mMovies, rMovies
+let ctrl
+```
+
+#### ✓ GOOD
+
+- ✓ **Be clear** with your variable names. If that means **verbose**, so be it.
+- ✓ Stick to **camelCase**, **TitleCase** and throw in an underscore if you really need to
+- ✓ **Uniqueness** is key, unique variables can be **refactored** and **searched**
+
+```js
+const movies = getMovies();
+const movieTitles = movies.map(({ title }) => title)
+
+let movieTitle
+let mRatedMovies, rRatedMovies
+let control
+```
+
+Below are some **conventional** naming patterns:
+
+#### ✓ GOOD
+
+```js
+Object.keys(object).forEach((key, index) => {});
+
+for (const movie of movies) {}
+
+// `i` is one of the few single letters that has meaning
+for (let i = 0; i < 100; i += 1) {}
+
+// Streams, RX Streams
+const myStream$ = fs.createReadStream(filePath);
+
+// Constants
+const { SOME_THING } = process.env;
+
+```
+
+---
+
+#### `5.2` Destructuring
+
+Destructuring makes code more terse, and when learnt; more readable.
+
+#### ✘ BAD
+
+- ✘ Logic to determine whether a variable is defaulted is **added complexity**
+
+```js
+const name = movies[movieId].movie.actors[actorId].actor.name;
+const nameTitle = movies[movieId].movie.actors[actorId].actor.title || '';
+
+const foo = event.body.data.foo;
+const bar = event.body.data.bar;
+const baz = event.body.data.baz || {};
+
+const deep = event.body.data.deep || {};
+const deepFoo = deep.foo || 1;
+const deepBar = deep.bar || 'test';
+
+function doStuff(options) {
+  options = options || {};
+  options.a = options.a == null ? 1 : options.a;
+  options.b = options.b == null ? 2 : options.b;
+
+  return options.a + options.b;
+}
+```
+
+#### ✓ GOOD
+
+- ✓ Select dynamically keyed containers once
+- ✓ Use **default values** when destructuring so that declaration is all in one place
+- ✓ Default values and renaming is **fixed logic** - thus is **repeatable**.
+
+```js
+const { movie } = movies[movieId];
+const { actor } = movie.actors[actorId];
+
+const {
+  name,
+  title: nameTitle = ''
+} = actor;
+
+const {
+  foo,
+  bar,
+  baz = {},
+  deep: {
+    foo: deepFoo = 1,
+    bar: deepBar = 'test'
+  } = {}
+} = event.body.data;
+```
+
+---
+
+#### `5.3` Function Parameters
+
+#### ✘ BAD
+
+```js
+function doStuff(options) {
+  options = options || {};
+  options.a = options.a == null ? 1 : options.a;
+  options.b = options.b == null ? 2 : options.b;
+
+  return options.a + options.b;
+}
+
+function doLotsOfStuff(blah, foo, bar, baz = 1, zing = 2) {
+  // ...
+}
+```
+
+#### ✓ GOOD
+
+- ✓ Destructure a **parameter object** rather than using more than **3 parameters**
+  - ✓ This has a **massive benefit** of describing the parameter **names**
+  - ✓ Order doesn't matter - **no order memorization**
+  - ✓ Any prop can have a default value
+
+```js
+function doStuff({ a = 1, b = 2 } = {}) {
+  return a + b; 
+}
+
+doStuff() // 3
+doStuff({}) // 3
+doStuff({ a: 0 }) // 2
+doStuff({ a: 0, b: 0 }) // 0
+
+// Prefer an object and just destruture with this many params
+function doLotsOfStuff({ blah, foo, bar, baz = 1, zing = 2 }) {
+  // ...
+}
+
+// Go multiline!
+function doLotsOfStuff({
+  blah, foo, bar,
+
+  // Optional stuff!
+  baz = 1,
+  zing = 2,
+  zong = zing // Yes, this works
+}) {
+  // ...
+}
 
 ```
 

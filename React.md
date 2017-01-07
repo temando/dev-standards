@@ -53,7 +53,7 @@ It's probably the easiest way to write tests.
 
 #### ✘ BAD
 
-```
+```js
 import React from 'react';
 
 const Text = ({ text }, { doStuff }) =>
