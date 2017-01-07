@@ -25,6 +25,7 @@ function build(obj) {
 }
 
 const stuff = { values: [1], count: 1 };
+
 build(stuff);
 ```
 
