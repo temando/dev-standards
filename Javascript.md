@@ -187,8 +187,8 @@ const result = await doStuffThatErrors()
 
 #### ✓ GOOD
 
-- ✓ Let your errors bubble up and handle them in one place
-  - This means you must maintain a promises all the way up 
+- ✓ Let your errors **bubble up** and **handle them once**
+  - This means you must **maintain promises** all the way up 
 
 ```js
 
