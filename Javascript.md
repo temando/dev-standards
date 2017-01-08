@@ -383,4 +383,98 @@ function doLotsOfStuff({
 }
 ```
 
+#### `5.4` Function configs
+
+When destructuring is not viable.
+
+#### ✓ GOOD
+- ✓ Use `Object.assign()` or `require('lutils').merge` to handle complex function configs
+  - This means you can set default values without defining variables
+
+```js
+//
+// Shallow merge...
+//
+
+class Stuff {
+  cosntructor(config = {}) {
+    this.config = Object.assign({
+      test: false,
+      left: '<',
+      right: '>',
+      obj: { foo: 1, bar: 2 }, // `obj` will be completely overwritten if in `config`
+    }, config);
+  }
+}
+
+new Stuff({ left: '!<', obj: { foo: 2, bar: 2 } })
+
+//
+// Deep merge...
+//
+
+import { merge } from 'lutils';
+
+// Deep merge
+class Stuff {
+  cosntructor(config = {}) {
+    this.config = merge({
+      credentials: {
+        user: process.env.USER,
+        pass: '',
+      },
+      json: true,
+    }, config);
+  }
+}
+
+doStuff({ credentials: { pass: 'testtesttest' } })
+
+//
+// Fancy deep default-cloned merge...
+//
+
+import { merge, clone } from 'lutils';
+import defaultConfig from './config/defaults';
+
+// Deep merge and clone
+class Stuff {
+  cosntructor(config = {}) {
+    this.config = merge(
+      clone(defaultConfig), // Clone it so any nested objects can't mutate the original
+      { foo: { bar: 1 } },
+      config,
+    );
+  }
+}
+```
+
+#### ✘ DANGER ZONE
+
+Below we treat class properties as fair game
+
+- ✘ Properties aren't whitelisted
+- ✘ `config` can overwrite functions, effectively extending it
+- ✓ Viable *only* when you have **full control** over your interface and its usage is **clearly defined**
+  - Should be accompanied by Flow Typing or comments
+
+```js
+class Stuff {
+  a = 1;
+
+  cosntructor(config = {}) {
+    Object.assign(this, config);
+  }
+
+  doStuff() { return 1; }
+}
+
+new Stuff({
+  a: 2, // Yay
+  doStuff() { return 4; } // Noooo
+});
+
+```
+
+
 ---
