@@ -359,15 +359,16 @@ function doStuff({ a = 1, b = 2 } = {}) {
   return a + b; 
 }
 
-doStuff() // 3
-doStuff({}) // 3
-doStuff({ a: 0 }) // 2
-doStuff({ a: 0, b: 0 }) // 0
+doStuff(); // 3
+doStuff({}); // 3
+doStuff({ a: 0 }); // 2
+doStuff({ a: 0, b: 0 }); // 0
 
-// Prefer an object and just destruture with this many params
-function doLotsOfStuff({ blah, foo, bar, baz = 1, zing = 2 }) {
-  // ...
-}
+// Prefer an destructured object
+function doLotsOfStuff({ blah, foo, bar, baz = 1, zing = 2 }) {}
+
+// Use a spread if you dont need to use the remaining params right away
+function doLotsOfStuff({ blah, ...remainingConfig }) {}
 
 // Go multiline!
 function doLotsOfStuff({
@@ -378,9 +379,8 @@ function doLotsOfStuff({
   zing = 2,
   zong = zing // Yes, this works
 }) {
-  // ...
+  
 }
-
 ```
 
 ---

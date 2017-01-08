@@ -23,7 +23,6 @@ This allows you to switch between versions of node on the fly.
 ```sh
 nvm install 6
 nvm alias default 6
-
 ```
 
 #### `1.2` Use `avn` to conform to `.node-version`
