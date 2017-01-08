@@ -5,6 +5,7 @@ NodeJS specific guidence and convention.
 ---
 
 1. [Version Management](#version-management)
+
 ---
 
 ## Version Management
