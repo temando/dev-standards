@@ -451,7 +451,7 @@ class Stuff {
 
 #### ✘ DANGER ZONE
 
-Below we treat class properties as fair game
+Below, the config is class properties.
 
 - ✘ Properties aren't whitelisted
 - ✘ `config` can overwrite functions, effectively extending it
