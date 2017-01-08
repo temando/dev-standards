@@ -12,7 +12,7 @@ Handlers should not pass down callbacks, and instead should use promises.
 
 #### ✘ BAD
 
-```
+```js
 export function handler(event, context, done) {
   doMyStuff(event, context, done);
 }
@@ -62,7 +62,7 @@ export const handler = HandlerNormalizer(async (event, context) => {
 Serverless 1, by default, uses the `lambda-proxy` integration method.  
 This means that it recieves a http-like response and can return one as well.
 
-The `lambda-proxy` integration should be preferred unless custom API Gateway behaviour is needed.
+The `lambda-proxy` integration should be preferred unless a lambda is not behind API Gateway.
 
 #### ✘ BAD
 ...
