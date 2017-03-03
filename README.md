@@ -8,3 +8,4 @@ Standardizing things related to development.
 - [NodeJS](NodeJS.md)
 - [Serverless](Serverless.md)
 - [React](React.md)
+- [Testing](Testing.md)
