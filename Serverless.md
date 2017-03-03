@@ -18,27 +18,6 @@ export function handler(event, context, done) {
 }
 ```
 
-
-#### ✓ OKAY
-
-```js
-export const handler = (event, context, done) => {
-  myStuffHandler(event, context)
-    .then(
-      (response) => done(null, response),
-      (err) => done(err)
-    );
-}
-```
-
-#### ✓ GOOD
-
-```js
-import stuffHandler from './stuff';
-
-export const handler = HandlerNormalizer(stuffHandler)
-```
-
 #### ✓ GOOD
 
 ```js
@@ -54,20 +33,3 @@ export const handler = HandlerNormalizer(async (event, context) => {
   }
 })
 ```
-
----
-
-#### `1.2` Handle responses consistantly
-
-Serverless 1, by default, uses the `lambda-proxy` integration method.  
-This means that it recieves a http-like response and can return one as well.
-
-The `lambda-proxy` integration should be preferred unless a lambda is not behind API Gateway.
-
-#### ✘ BAD
-...
-
-#### ✓ GOOD
-...
-
----
