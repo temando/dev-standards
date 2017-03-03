@@ -4,32 +4,76 @@ Serverless 1+ convention.
 
 ---
 
-## Handlers
+1. Integration Tests
 
-#### `1.1` Abstract away the handler
+---
 
-Handlers should not pass down callbacks, and instead should use promises.  
+## Integration Tests
 
-#### ✘ BAD
+#### `1.1` Hit the CLI directly
+
+Integrating with serverless is a challenge, and it does no expose a documented
+programmatic api. Thus, we use the CLI via a module like `shelljs`.
+
+✓ Ensure `serverless.env.yml` populates aws credentials
+✓ Extract the deployed endpoint by parsing `sls info --verbose`
 
 ```js
-export function handler(event, context, done) {
-  doMyStuff(event, context, done);
+export function getServerlessInfo(): SlsInfo {
+  const keyword = 'ServiceEndpoint: ';
+  const endpoint = sh.exec('sls info --verbose', { silent: true }).stdout
+    .split('\n')
+    .find(line => line.startsWith(keyword))
+    .substr(keyword.length)
+    .trim();
+
+  return {
+    endpoint,
+  };
 }
 ```
 
-#### ✓ GOOD
+#### `1.2` Write tests with standard libraries
+
+✓ Use the `endpoint` to hit it like a real client, with `fetch` or `axios`
 
 ```js
-export const handler = HandlerNormalizer(async (event, context) => {
-  const result = await doSomeStuff(event.body)
+import 'isomorphic-fetch';
+import { getServerlessInfo } from './utils';
 
-  if (!result) throw new Error(":(");
+describe('/myFancyFunction', () => {
+  let endpoint
 
-  return {
-    statusCode: 201,
-    headers: { blah: 'blah' },
-    body: { foo: 'bar' }
-  }
+  beforeAll(() => {
+    endpoint = getServerlessInfo().endpoint;
+  });
+});
+```
+
+#### `1.3` Start with smoke tests
+
+As above, we're merely making sure a the endpoint doesn't error on us.   
+This is typically all a smoke test needs to do.
+
+```js
+it('fetches a record', async () => {
+  const response = await fetch(`${endpoint}/test/myFancyFunction`, {
+    method: 'GET',
+    headers: { 'accept': 'application/vnd.api+json', 'content-type': 'application/vnd.api+json', },
+    body: JSON.stringify({
+      data: {
+        type: 'test',
+        attributes: { test: true },
+      },
+    }),
+  });
+
+  const body = await res.json();
+
+  expect(response.status).toBe(200);
+  expect(body.data).toBeTruthy();
 })
 ```
+
+
+
