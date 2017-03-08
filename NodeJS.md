@@ -5,6 +5,7 @@ NodeJS specific guidence and convention.
 ---
 
 1. [Version Management](#version-management)
+2. [Debugging](#debugging)
 
 ---
 
@@ -41,3 +42,10 @@ cd ~
 cd my-new-project
 $ avn activated 6 (avn-nvm v6.9.1)
 ```
+
+## Debugging
+
+TODO:
+  - describe vscode examples, links
+  - when to use debugging
+  - using in serverless projects
