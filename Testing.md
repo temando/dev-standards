@@ -16,7 +16,6 @@ Test driven development
 
 #### `1.1` Integration Tests
 
-Writing unit tests...
 - ✘ Using tools like **Postman**
 - ✓ Within source code, like regular tests
 
