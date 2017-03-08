@@ -5,8 +5,8 @@ All things unit, integration, TDD.
 ---
 
 1. [TDD](#tdd)
-  1. [Integration Tests][#1-1-integration-tests]
-1. [Jest][#jest]
+   1. [Integration Tests](#1-1-integration-tests)
+2. [Jest](#jest)
 ---
 
 ## TDD
@@ -55,3 +55,4 @@ To use jest:
   "setupFiles": ["./test/setup.js"]
 }
 ```
+
