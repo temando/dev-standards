@@ -12,14 +12,14 @@ Serverless 1+ convention.
 
 #### `1.1` Hit the CLI directly
 
-Integrating with serverless is a challenge, and it does no expose a documented
+Integrating with serverless is a challenge, and it does not expose a documented
 programmatic api. Thus, we use the CLI via a module like `shelljs`.
 
 ✓ Ensure `serverless.env.yml` populates aws credentials
 ✓ Extract the deployed endpoint by parsing `sls info --verbose`
 
 ```js
-export function getServerlessInfo(): SlsInfo {
+export function getServerlessInfo() {
   const keyword = 'ServiceEndpoint: ';
   const endpoint = sh.exec('sls info --verbose', { silent: true }).stdout
     .split('\n')
