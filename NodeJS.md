@@ -6,6 +6,7 @@ NodeJS specific guidence and convention.
 
 1. [Version Management](#version-management)
 2. [Debugging](#debugging)
+3. [CICD](#CICD)
 
 ---
 
@@ -49,3 +50,7 @@ TODO:
   - describe vscode examples, links
   - when to use debugging
   - using in serverless projects
+
+## CICD
+
+CICD should be as reproducable as possible.
