@@ -34,21 +34,20 @@ To use jest:
   - `yarn test:integration` will find files like `foo.int.test.js`
   - `yarn test` will execute unit tests matching `foo.test.js` and skip integration tests
 
-```json
+```js
 {
   "scripts": {
-    "test": "yarn test:unit",
-    "test:jest": "jest --config .jestrc",
-    "test:unit": "yarn test:jest -- --testPathPattern='\\/[^/.]+\\.test\\.jsx?$'",
-    "test:integration": "yarn test:jest -- -i --testPathPattern='\\.int\\.test\\.jsx?$'",
-    "test:watch": "yarn test -- -i --watch"
+    "build": "tsc",
+    "test": "jest", // Runs your tests as configured in jest.config.js
+    "test:build": "jest --config '{}'", // Tests your built files, with the default config
+    "test:integration": "jest --testMatch '**/*.int-test.*'" // Only hits file like `fancy.int-test.ts`
   }
 }
 ```
 
-- ✓ (Optionally) create a `.jestrc` config
+- ✓ Create a `jest.config.js` file
 
-```json
+```js
 {
   "verbose": true,
   "setupFiles": ["./test/setup.js"]
