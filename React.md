@@ -2,6 +2,8 @@
 
 React best practices.
 
+# `WARNING: outdated, needs love`
+
 ---
 
 1. [Stateless Components](#stateless-components)
