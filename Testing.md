@@ -9,17 +9,14 @@ All things unit, integration, TDD.
 2. [Jest](#jest)
 ---
 
-## TDD
-
-Test driven development 
-
+## Test Driven Development
 
 #### `1.1` Integration Tests
 
 - ✘ Using tools like **Postman**
-- ✓ Within source code, like regular tests
+- ✓ Writing tests in code
 
-In order to practice TDD, integration tests should exist within source code.
+Integration tests should exist within source code.
 - Code can be debugged with a debugger
 - Tests can be more intelligent, making use of full node environment
 
@@ -45,7 +42,7 @@ To use jest:
 }
 ```
 
-- ✓ Create a `jest.config.js` file
+- ✓ Create a `jest.config.js` file. This file is automatically detected by jest.
 
 ```js
 {
