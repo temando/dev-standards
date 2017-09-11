@@ -31,8 +31,8 @@ See [./Serverless.md#integration-tests](./Serverless.md#integration-tests)
 
 To use jest:
 - ✓ Configure your `package.json`
-  - `yarn test:integration` will find files like `foo.int.test.js`
-  - `yarn test` will execute unit tests matching `foo.test.js` and skip integration tests
+  - `yarn test:integration` will execute files like `foo.int-test.ts`
+  - `yarn test` will execute unit tests matching only `foo.test.ts` or `foo.spec.ts`
 
 ```js
 {
